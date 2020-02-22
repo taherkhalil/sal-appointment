@@ -351,16 +351,17 @@ def on_trash(self):
 	if self.sales_invoice:
 		throw(_("Account with existing transaction can not be deleted"))
 		
-
+@frappe.whitelist()
 def set_complete_status(doc,method):
-	frappe.errprint('appointment')
-	if doc.from_appointment:
-		apt= frappe.get_doc("Appointment",doc.from_appointment)
-		apt.status='Completed'
-		apt.sales_invoice = doc.name
-		apt.save()
-		doc.indicator_color = "green"
-		doc.indicator_title = _("Paid")
+	# frappe.errprint('appointment')
+	pass
+	# if doc.from_appointment:
+	# 	apt= frappe.get_doc("Appointment",doc.from_appointment)
+	# 	apt.status='Completed'
+	# 	apt.sales_invoice = doc.name
+	# 	apt.save()
+	# 	doc.indicator_color = "green"
+	# 	doc.indicator_title = _("Paid")
 
 def set_indicator(self):
 	"""Set indicator for portal"""
